@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <!-- javascript import -->
+    <script src="./script.js" defer></script>
+    <title>Student Registration</title>
+  </head>
+  <body class="bg-gray-500 min-h-screen">
+    <header>
+      <div class="flex flex-col justify-center items-center py-4 gap-2">
+        <h1 class="text-2xl font-bold">Student Registration System</h1>
+        <p>
+          A platform for managing student information, registration and academic
+          records.
+        </p>
+        <button
+          data-add-btn
+          class="bg-teal-500 px-5 py-2 rounded-sm text-sm cursor-pointer hover:bg-teal-400"
+        >
+          Add student
+        </button>
+      </div>
+    </header>
+    <!-- modal -->
+    <div
+      id="add_student_modal"
+      class="absolute top-0 left-0 bg-black/50 w-full h-screen z-10 hidden"
+    >
+      <div class="bg-gray-800 m-auto p-4 rounded-md">
+        <!-- form -->
+        <form>
+          <div
+            class="flex flex-col justify-center items-center gap-2 text-white"
+          >
+            <h1 class="text-lg font-bold">Student Registration</h1>
+
+            <!-- name -->
+            <div class="flex flex-col w-full">
+              <legend class="text-xs mb-2">Student name</legend>
+              <input
+                data-name
+                type="text"
+                placeholder="Name"
+                class="bg-gray-700 text-white px-4 py-2 rounded-sm"
+                required
+              />
+            </div>
+            <!-- id -->
+            <div class="flex flex-col w-full">
+              <legend class="text-xs mb-2">Student Id</legend>
+              <input
+                data-id
+                type="number"
+                placeholder="Student Id"
+                class="bg-gray-700 text-white px-4 py-2 rounded-sm"
+                required
+                min="0"
+              />
+            </div>
+            <!-- email -->
+            <div class="flex flex-col w-full">
+              <legend class="text-xs mb-2">Email</legend>
+              <input
+                data-email
+                type="email"
+                placeholder="Email"
+                class="bg-gray-700 text-white px-4 py-2 rounded-sm"
+                required
+              />
+            </div>
+            <!-- contact -->
+            <div class="flex flex-col w-full">
+              <legend class="text-xs mb-2">Contact No.</legend>
+              <input
+                data-contact
+                type="number"
+                placeholder="Contact No."
+                class="bg-gray-700 text-white px-4 py-2 rounded-sm"
+                required
+                min="0"
+                oninput="if(this.value.length>=10) this.value = this.value.slice(0,10)"
+              />
+            </div>
+
+            <!-- cancel -->
+            <div class="flex justify-between w-full mt-2">
+              <button
+                data-cancel-btn
+                type="button"
+                class="bg-gray-600 px-5 py-2 rounded-sm text-sm cursor-pointer hover:bg-gray-500"
+              >
+                Cancel
+              </button>
+
+              <!-- submit -->
+              <button
+                data-submit-btn
+                type="submit"
+                class="bg-teal-500 px-5 py-2 text-black rounded-sm text-sm cursor-pointer hover:bg-teal-400"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- students tabale -->
+    <section class="mt-8 px-10 pb-10">
+      <h2 class="text-xl font-semibold mb-4">Student Reacords</h2>
+      <table
+        class="min-w-full bg-white rounded-md overflow-hidden"
+        data-student-table
+      >
+        <!-- header -->
+        <thead class="bg-gray-900 text-white">
+          <tr>
+            <th class="p-3 text-left">Name</th>
+            <th class="p-3 text-left">Student ID</th>
+            <th class="p-3 text-left">Email</th>
+            <th class="p-3 text-left">Contact No.</th>
+            <th class="p-3 text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Student details will be rendered dynamically -->
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>
